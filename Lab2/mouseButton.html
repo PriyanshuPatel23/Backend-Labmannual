@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Button Click</title>
+</head>
+
+<body>
+    <p>Click Anywhere</p>
+    <script>
+        document.addEventListener('mousedown',
+            e => {
+                if (e.button === 0) {
+                    alert('left clicked');
+                }
+                else if (e.button === 2) {
+                    alert('Right Clicked')
+                }
+            }
+        )
+
+        document.addEventListener('contextmenu', e => {
+            e.preventDefault();
+        })
+    </script>
+</body>
+
+</html>

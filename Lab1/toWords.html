@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Number to Words</title>
+  <style>
+    body {font-family: Arial, sans-serif; padding: 20px;}
+    #out {margin-top: 10px; font-weight: bold;}
+  </style>
+</head>
+<body>
+  <button onclick="run()">Enter number (0‑999)</button>
+  <div id="out"></div>
+
+  <script>
+    const units = ['zero','one','two','three','four','five','six','seven','eight','nine'];
+    const teens = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+    const tens  = ['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+
+    function toWords(n) {
+      if (isNaN(n)) return 'not a number';
+      if (n < 0 || n > 999) return 'out of range';
+      if (n === 0) return units[0];
+
+      let words = '';
+
+      if (n >= 100) {
+        words += units[Math.floor(n/100)] + ' hundred';
+        n %= 100;
+        if (n) words += ' and ';
+      }
+
+      if (n >= 20) {
+        words += tens[Math.floor(n/10)];
+        n %= 10;
+        if (n) words += '-' + units[n];
+      } else if (n >= 10) {
+        words += teens[n-10];
+      } else if (n > 0) {
+        words += units[n];
+      }
+
+      return words;
+    }
+
+    function run() {
+      const val = prompt('Enter a number (0‑999):');
+      document.getElementById('out').textContent = toWords(Number(val));
+    }
+  </script>
+</body>
+</html>

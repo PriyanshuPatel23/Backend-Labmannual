@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Vowel “a” Finder</title>
+  <style>body{font-family:sans-serif;padding:20px;}</style>
+</head>
+<body>
+  <input id="txt" placeholder="Enter a word" />
+  <button onclick="analyse()">Analyse</button>
+  <pre id="out"></pre>
+
+  <script>
+    function analyse() {
+      const str = document.getElementById('txt').value;
+      const first = str.indexOf('a');
+      const last  = str.lastIndexOf('a');
+
+      let result;
+      if (first === -1) {
+        result = 'No “a” found in the word.';
+      } else {
+        const between = str.slice(first + 1, last);
+        result = `First “a” position: ${first + 1}\n` +
+                 `Last  “a” position: ${last + 1}\n` +
+                 `String between: "${between}"`;
+      }
+      document.getElementById('out').textContent = result;
+    }
+  </script>
+</body>
+</html>

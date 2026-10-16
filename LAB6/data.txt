@@ -1,0 +1,11 @@
+About Us
+--------
+This is a demo about page served from a text file.
+
+Contact Us
+--------
+This is a demo Contact page served from a text file.
+
+Home Page
+--------
+This is a demo home page served from a text file.

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <script>
+        const a = Number(prompt('First Number:'));
+        const op = prompt('Operator (+, -, *, /, %):');
+        const b = Number(prompt('Second Number:'));
+
+        let result;
+        switch (op) {
+            case '+':
+                result = a + b;
+                break;
+            case '-':
+                result = a - b;
+                break;
+            case '*':
+                result = a * b;
+                break;
+            case '/':
+                result = b !== 0 ? a / b : '∞ (divide by 0)';
+                break;
+            case '%':
+                result = a % b;
+                break;
+            default: result = 'Invalid Operator'
+        }
+        alert(`Result: ${result}`);
+    </script>
+</body>
+
+</html>

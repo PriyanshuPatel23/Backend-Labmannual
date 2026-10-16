@@ -1,0 +1,8 @@
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(135deg, #f0f4ff, #e6e9ff);
+  color: #2e2e3a;
+  text-align: center;
+  padding: 2rem;
+}
+h1 { color: #3a53a4; }

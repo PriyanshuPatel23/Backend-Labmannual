@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+build/
+out/
+
+# Coverage reports
+coverage/
+
+# Cache
+.cache/
+.npm/
+.eslintcache
+.turbo/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test artifacts
+playwright-report/
+test-results/
+
+# Local databases
+*.sqlite
+*.sqlite3
+*.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Package manager debug files
+.pnpm-debug.log*
+
+# Deployment
+.vercel/
+.netlify/
+
+# Optional: Ignore local uploads
+# uploads/
