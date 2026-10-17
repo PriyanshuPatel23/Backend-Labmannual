@@ -1,0 +1,182 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.app {
+  max-width: 960px;
+  margin: 30px auto;
+  padding: 0 16px;
+}
+
+/* ── HEADER ── */
+h1 {
+  text-align: center;
+  margin-bottom: 6px;
+  font-size: 1.8rem;
+}
+.subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+/* ── CONTROLS ── */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.controls input[type="text"] {
+  flex: 1;
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+.controls select {
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  background: #fff;
+}
+.btn-add {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.btn-add:hover { background-color: #0056b3; }
+
+/* ── STATS ── */
+.stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.stat-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+.stat-card strong { display: block; font-size: 1.4rem; }
+
+/* ── TABLE ── */
+.table-wrapper {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+thead {
+  background-color: #343a40;
+  color: #fff;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+tbody tr:hover { background-color: #f8f9fa; }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.badge-yes { background: #d4edda; color: #155724; }
+.badge-no  { background: #f8d7da; color: #721c24; }
+
+/* ── ACTION BUTTONS ── */
+.actions { display: flex; gap: 6px; }
+.btn-edit   { padding: 4px 10px; background: #ffc107; color: #333; border: none; border-radius: 4px; cursor: pointer; font-size: 0.82rem; }
+.btn-toggle { padding: 4px 10px; background: #17a2b8; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.82rem; }
+.btn-delete { padding: 4px 10px; background: #dc3545; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.82rem; }
+.btn-edit:hover   { background: #e0a800; }
+.btn-toggle:hover { background: #138496; }
+.btn-delete:hover { background: #c82333; }
+
+/* ── STATES ── */
+.loading, .empty { text-align: center; padding: 40px; color: #666; }
+.error-box { text-align: center; padding: 30px; color: red; }
+.error-box button { margin-top: 10px; padding: 7px 16px; border: none; background: #007bff; color: white; border-radius: 4px; cursor: pointer; }
+
+/* ── MODAL ── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal {
+  background: #fff;
+  border-radius: 6px;
+  padding: 24px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+}
+.modal h2 { margin-bottom: 16px; font-size: 1.2rem; }
+
+.form-group { margin-bottom: 12px; display: flex; flex-direction: column; gap: 4px; }
+.form-group label { font-size: 0.85rem; font-weight: bold; }
+.form-group input[type="text"],
+.form-group input[type="number"] {
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: Arial, sans-serif;
+}
+.form-group input:focus { outline: none; border-color: #007bff; }
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.form-actions { display: flex; gap: 10px; margin-top: 16px; }
+.btn-primary   { flex: 1; padding: 8px; background: #007bff; color: white; border: none; border-radius: 4px; font-size: 0.95rem; cursor: pointer; }
+.btn-secondary { flex: 1; padding: 8px; background: #6c757d; color: white; border: none; border-radius: 4px; font-size: 0.95rem; cursor: pointer; }
+.btn-primary:hover   { background: #0056b3; }
+.btn-secondary:hover { background: #545b62; }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  z-index: 9999;
+}
