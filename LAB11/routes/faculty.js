@@ -1,9 +1,8 @@
+// PART A
 const express = require('express');
 const router = express.Router();
 const asyncHandler = require('./asyncWrapper');
 const faculty = require('../models/faculty');
-
-
 
 router.get('/', asyncHandler(async (req, res) => {
     const list = await faculty.find();

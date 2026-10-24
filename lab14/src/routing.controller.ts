@@ -78,6 +78,7 @@ export class RoutingController {
     partialUpdate(@Body() payload: any): string {
         return `Partial update received: ${JSON.stringify(payload)}`;
     }
+    
     @Delete('remove/:id')
     deleteItem(@Param('id') id: string): string {
         return `Deleted item with id ${id}`;

@@ -6,12 +6,14 @@ mongoose.connect(DB_URI)
     .then(() => console.log("Connected to MongoDB Atlas"))
     .catch((err) => console.error("Connection error:", err));
 
+// PART A
 const facultySchema = new mongoose.Schema({
     name: { type: String, required: true },
     department: { type: String, required: true },
     email: { type: String, required: true, unique: true },
 })
 
+// PART B
 const studentSchema = new mongoose.Schema({
     name: { type: String, required: true },
     rollNo: { type: Number, required: true, unique: true },
@@ -19,6 +21,7 @@ const studentSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
 });
 
+// PART C
 const productSchema = new mongoose.Schema({
     name: { type: String, required: true },
     price: { type: Number, required: true },
@@ -30,6 +33,7 @@ const Faculty = mongoose.model('Faculty', facultySchema);
 const Student = mongoose.model('Student', studentSchema);
 const Product = mongoose.model('Product', productSchema);
 
+// PART A
 async function runDemo() {
 
     const prof = await Faculty.create({

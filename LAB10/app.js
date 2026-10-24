@@ -10,12 +10,14 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Part A
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.get('/', (req, res) => {
 //   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 // });
 
+// Part A
 app.use('/api', apiRouter);
 
 app.use((req, res) => {
@@ -28,8 +30,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 });
 
-const DB_URI = process.env.MONGODB_URI ||
-               'mongodb://localhost:27017/lab10_demo';
+const DB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/lab10_demo';
 mongoose.connect(DB_URI)
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => {

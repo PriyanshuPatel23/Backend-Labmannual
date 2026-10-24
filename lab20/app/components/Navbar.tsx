@@ -1,7 +1,7 @@
 'use client';
 
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/esm/Container';
+import Nav from 'react-bootstrap/esm/Nav';
 import { Navbar as BootstrapNavbar } from 'react-bootstrap';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

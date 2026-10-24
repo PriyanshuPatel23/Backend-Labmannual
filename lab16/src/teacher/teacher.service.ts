@@ -8,6 +8,7 @@ export interface Teacher {
   age?: number;
 }
 
+// PART C
 @Injectable()
 export class TeacherService {
   private teachers: Teacher[] = [];

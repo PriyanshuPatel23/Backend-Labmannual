@@ -1,16 +1,16 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from '../../node_modules/vitest/index.cjs';
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthService } from './auth.service.js';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { User } from './user.entity.js';
 import { JwtService } from '@nestjs/jwt';
 import { BadRequestException, UnauthorizedException } from '@nestjs/common';
-import * as bcrypt from 'bcryptjs';
+import * as bcrypt from '../../node_modules/bcryptjs/umd/index.js';
 
 const mockUser: Partial<User> = {
   id: 1,
   email: 'test@gmail.com',
-  password: '',  
+  password: '',
   resetToken: null!,
   resetTokenExpiry: null!,
 };
@@ -46,7 +46,7 @@ describe('AuthService', () => {
 
   describe('register()', () => {
     it('should register a new user successfully', async () => {
-      mockUserRepo.findOneBy.mockResolvedValue(null); 
+      mockUserRepo.findOneBy.mockResolvedValue(null);
       mockUserRepo.create.mockReturnValue(mockUser);
       mockUserRepo.save.mockResolvedValue(mockUser);
 
@@ -57,7 +57,7 @@ describe('AuthService', () => {
     });
 
     it('should throw BadRequestException if email already registered', async () => {
-      mockUserRepo.findOneBy.mockResolvedValue(mockUser); 
+      mockUserRepo.findOneBy.mockResolvedValue(mockUser);
 
       await expect(service.register('test@gmail.com', '123456'))
         .rejects.toThrow(BadRequestException);
@@ -123,7 +123,7 @@ describe('AuthService', () => {
     });
 
     it('should throw BadRequestException if token is expired', async () => {
-      const pastDate = new Date(Date.now() - 1000); 
+      const pastDate = new Date(Date.now() - 1000);
       mockUserRepo.findOneBy.mockResolvedValue({
         ...mockUser,
         resetToken: 'expired-token',
