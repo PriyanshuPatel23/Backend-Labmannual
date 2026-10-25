@@ -1,24 +1,27 @@
-'use client'
-import { notFound } from "next/navigation";
-import { useParams } from "next/navigation";
+export default async function RecordsPage({
+  params,
+}: {
+  params: { pageNo: string };
+}) {
+  const { pageNo } = await params;
 
-const RECORDS_PER_PAGE = 10;
-
-export default function RecordsPage() {
-  const { pageNo } = useParams<{ pageNo: string }>();
   const page = Number(pageNo);
 
-  if (!Number.isInteger(page) || page < 1) notFound();
+  if (!Number.isInteger(page) || page < 1) {
+    return <h1>Invalid Page Number</h1>;
+  }
 
-  const startIdx = (page - 1) * RECORDS_PER_PAGE + 1;
-  const endIdx = page * RECORDS_PER_PAGE;
+  const recordsPerPage = 10;
+  const startIndex = (page - 1) * recordsPerPage;
+  const endIndex = startIndex + recordsPerPage - 1;
 
   return (
-    <section style={{ padding: "2rem" }}>
-      <h2>Page {page}</h2>
-      <p>
-        Showing records <strong>{startIdx}</strong>–<strong>{endIdx}</strong>
-      </p>
-    </section>
+    <div>
+      <h1>Pagination Details</h1>
+      <p>Page Number: {page}</p>
+      <p>Records Per Page: {recordsPerPage}</p>
+      <p>Start Index: {startIndex}</p>
+      <p>End Index: {endIndex}</p>
+    </div>
   );
 }

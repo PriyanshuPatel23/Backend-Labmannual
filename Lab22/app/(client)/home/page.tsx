@@ -1,5 +1,3 @@
 export default function Home() {
-  return (
-    <h1>Welcome to the public site</h1>
-  );
+  return <h3>Welcome to Client Home Page</h3>;
 }

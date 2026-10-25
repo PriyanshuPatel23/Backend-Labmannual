@@ -1,17 +1,26 @@
-import { NextResponse } from "next/server";
-import { students, Student } from "@/lib/data";
+import { addStudent, getStudents } from "@/lib/student";
 
 export async function GET() {
-  return NextResponse.json(students);
+  return Response.json(getStudents());
 }
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const newStudent: Student = {
-    id: Date.now(),
-    name: body.name ?? "Unnamed",
-    age: body.age ?? 0,
+
+  if (!body.name || !Number.isInteger(body.age)) {
+    return Response.json(
+      { message: "Name and integer age are required" },
+      { status: 400 }
+    );
+  }
+
+  const student = {
+    id: Math.max(0, ...getStudents().map((s) => s.id)) + 1,
+    name: body.name,
+    age: body.age,
   };
-  students.push(newStudent);
-  return NextResponse.json(newStudent, { status: 201 });
+
+  addStudent(student);
+
+  return Response.json(student, { status: 201 });
 }

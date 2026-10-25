@@ -1,15 +1,8 @@
-import '../globals.css';
-export const metadata = { title: 'Auth', description: 'Login / Register' };
-
-export default function AuthLayout({
-  children,
-}: { children: React.ReactNode }) {
+export default function AuthLayout({ children }) {
   return (
-    <section style={{ background: '#f0f9ff', minHeight: '100vh' }}>
-      <header style={{ padding: '1rem', textAlign: 'center' }}>
-        <h2>Auth Area</h2>
-      </header>
-      <main style={{ maxWidth: '400px', margin: '2rem auto' }}>{children}</main>
-    </section>
+    <div style={{ background: "#eeeeff", padding: "30px" }}>
+      <h2>Authentication Layout</h2>
+      {children}
+    </div>
   );
 }

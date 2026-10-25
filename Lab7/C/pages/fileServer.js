@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         return res.end('404 – page not found');
     }
-    const filePath = path.join(__dirname, 'pages', fileName);
+    const filePath = path.join(__dirname, fileName);
 
     const readStream = fs.createReadStream(filePath, { encoding: 'utf8' });
 

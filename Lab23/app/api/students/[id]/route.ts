@@ -1,27 +1,57 @@
-import { NextResponse } from "next/server";
-import { students, Student } from "@/lib/data";
+import { deleteStudent, getStudentById, updateStudent } from "@/lib/student";
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
-  const id = Number(params.id);
-  const student = students.find((s) => s.id === id);
-  if (!student) return NextResponse.json({ error: "Not found" }, { status: 404 });
-  return NextResponse.json(student);
+export async function GET(
+  request: Request,
+  { params }: { params: { id: number } },
+) {
+  const { id } = await params;
+  const student = getStudentById(Number(id));
+
+  if (!student) {
+    return Response.json({ message: "Student not found" }, { status: 404 });
+  }
+
+  return Response.json(student);
 }
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
-  const id = Number(params.id);
-  const index = students.findIndex((s) => s.id === id);
-  if (index === -1) return NextResponse.json({ error: "Not found" }, { status: 404 });
+export async function PUT(
+  request: Request,
+  { params }: { params: { id: number } },
+) {
+  const { id } = await params;
   const body = await request.json();
-  const updated: Student = { ...students[index], ...body, id };
-  students[index] = updated;
-  return NextResponse.json(updated);
+
+  if (!body.name || !Number.isInteger(body.age) || body.age < 1) {
+    return Response.json(
+      { message: "Valid name and age are required" },
+      { status: 400 },
+    );
+  }
+
+  const student = updateStudent(Number(id), {
+    name: body.name,
+    age: body.age,
+  });
+
+  if (!student) {
+    return Response.json({ message: "Student not found" }, { status: 404 });
+  }
+
+  return Response.json(student);
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
-  const id = Number(params.id);
-  const index = students.findIndex((s) => s.id === id);
-  if (index === -1) return NextResponse.json({ error: "Not found" }, { status: 404 });
-  const [removed] = students.splice(index, 1);
-  return NextResponse.json(removed);
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: number } },
+) {
+  const { id } = await params;
+  const deleted = deleteStudent(Number(id));
+
+  if (!deleted) {
+    return Response.json({ message: "Student not found" }, { status: 404 });
+  }
+
+  return Response.json({
+    message: "Student deleted successfully",
+  });
 }

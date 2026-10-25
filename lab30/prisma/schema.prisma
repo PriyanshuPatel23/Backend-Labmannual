@@ -1,0 +1,26 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  UserID       Int     @id @default(autoincrement())
+  UserName     String  @unique @db.VarChar(100)
+  Email        String  @unique @db.VarChar(150)
+  PasswordHash String  @db.VarChar(255)
+  Tasks        Task[]
+}
+
+model Task {
+  TaskID          Int     @id @default(autoincrement())
+  TaskTitle       String  @db.VarChar(150)
+  TaskDescription String  @db.Text
+  IsCompleted     Boolean @default(false)
+  UserID          Int
+  User            User    @relation(fields: [UserID], references: [UserID], onDelete: Cascade)
+}
